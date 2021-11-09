@@ -64,6 +64,7 @@ func main() {
 
 	printAnything()
 
+	controlStatement()
 	//struct{}
 	//interface{}
 }
@@ -158,4 +159,62 @@ func printAnything() {
 	Anything([]string{"hi", "my", "hello", "world"})
 	Anything(struct{}{})
 	Anything([]interface{}{1, 2, 3, "test", "ini", struct{}{}})
+
+	mymap := make(map[string]interface{})
+	mymap["name"] = "123123"
+	mymap["age"] = 123
+}
+
+func controlStatement() {
+	fmt.Println("Hello world")
+
+	//if else, for, switch case, break continue
+	lampu := "red"
+	fmt.Println(lampu)
+	if lampu == "red" {
+		lampu = "yellow"
+		fmt.Println(lampu)
+	} else if lampu == "yellow" {
+		lampu = "green"
+		fmt.Println(lampu)
+	} else {
+		fmt.Println(lampu)
+	}
+
+	f := true
+	flag := &f
+
+	if flag == nil {
+		fmt.Println("value is il")
+	} else if *flag {
+		fmt.Println("true")
+	} else {
+		fmt.Println("false")
+	}
+
+	for i := 0; i < 3; i++ {
+		fmt.Println(i)
+	}
+
+	arr := []string{"satu", "dua", "tiga", "empat"}
+
+	for i, value := range arr {
+		fmt.Println(i)
+		fmt.Println(value)
+	}
+
+	fmt.Println("=======")
+
+	mymap2 := make(map[string]interface{})
+	mymap2["name"] = "angad"
+	mymap2["age"] = 21
+	for k, v := range mymap2 {
+		fmt.Printf("Key: %s and Value: %v", k, v)
+	}
+
+	numberArr := []int{1, 2, 3, 4}
+	for _, value := range numberArr {
+		fmt.Println(value)
+	}
+
 }
