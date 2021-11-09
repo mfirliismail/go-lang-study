@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	fmt.Println("Hello world")
@@ -16,4 +19,143 @@ func main() {
 		tampil = "hasilnya adalah ganjil"
 	}
 	fmt.Println(tampil)
+
+	// =====================
+	// data type
+	// =====================
+
+	// === atomic data types ===
+
+	// string
+	huruf := "string"
+	fmt.Println("ini adalah huruf", huruf)
+
+	var iniAbjad string
+	iniAbjad = "huruf ini adalah sebuah abjad"
+	fmt.Println("ini adalah string", iniAbjad)
+	fmt.Println(strings.Contains(huruf, iniAbjad))
+
+	fmt.Println(strings.Split(iniAbjad, " "))
+
+	// int
+
+	angka := 40
+	fmt.Println(angka)
+	// int32
+	// int64
+	// uint
+	// uint32
+	// uint64
+
+	// === unsage ===
+
+	// Pointers
+
+	// === abstract data type ===
+
+	//map[] or arrays
+	todo()
+
+	pointer()
+
+	structure("Firli", 19, 2)
+
+	interfaceStudy()
+
+	printAnything()
+
+	//struct{}
+	//interface{}
+}
+
+func todo() {
+
+	array := []int{1, 2, 3, 4}
+
+	arr2 := []string{"hi", "my", "hello", "world"}
+
+	arr2 = append(arr2, "test", "ini", "test", "append")
+	fmt.Println("angka =", array, "string =", arr2)
+	coba := []int{}
+	for i := len(array) - 1; i >= 0; i-- {
+		coba = append(coba, array[i])
+	}
+	fmt.Println("reverse array", coba)
+
+}
+
+func pointer() {
+	m1, m2 := 2, 3
+	fmt.Println(m1, m2)
+	swap(&m1, &m2)
+	fmt.Println(m1, m2)
+}
+
+func swap(m1, m2 *int) {
+	var ubah int
+	ubah = *m2
+	*m2 = *m1
+	*m1 = ubah
+}
+
+type Car struct {
+	Name    string
+	Age     int
+	ModelNo int
+}
+
+func (c Car) GetName() {
+	fmt.Println("the car name is " + c.Name + " and its age is")
+}
+
+type Mobil interface {
+	Drive()
+	Stop()
+}
+type Lambo struct {
+	LamboModel string
+}
+type Pajero struct {
+	PajeroModel string
+}
+
+func (l *Lambo) Drive() {
+	fmt.Println("Lambo sedang mengemudi")
+	fmt.Println(l.LamboModel)
+}
+
+func (p *Pajero) Drive() {
+	fmt.Println("Pajero sedang mengemudi")
+	fmt.Println(p.PajeroModel)
+}
+
+func interfaceStudy() {
+	l := Lambo{"M221"}
+	p := Pajero{"C92K"}
+	l.Drive()
+
+	p.Drive()
+}
+
+func structure(name string, age int, modelno int) {
+	c := Car{
+		Name:    name,
+		Age:     age,
+		ModelNo: modelno,
+	}
+	fmt.Println(c)
+	c.GetName()
+
+}
+
+func Anything(param interface{}) {
+	fmt.Println(param)
+}
+
+func printAnything() {
+	Anything("ini string")
+	Anything(123123)
+	Anything([]string{"hi", "my", "hello", "world"})
+	Anything(struct{}{})
+	Anything([]interface{}{1, 2, 3, "test", "ini", struct{}{}})
 }
