@@ -65,6 +65,8 @@ func main() {
 	printAnything()
 
 	controlStatement()
+
+	switchCase("Sun")
 	//struct{}
 	//interface{}
 }
@@ -163,6 +165,14 @@ func printAnything() {
 	mymap := make(map[string]interface{})
 	mymap["name"] = "123123"
 	mymap["age"] = 123
+}
+func switchCase(Value string) {
+	switch Value {
+	case "Mon", "Tue", "Wed", "Thu", "Fri":
+		fmt.Println("hari kerja")
+	case "Sun", "Sat":
+		fmt.Println("hari libur")
+	}
 }
 
 func controlStatement() {
